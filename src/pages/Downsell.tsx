@@ -118,7 +118,7 @@ const Downsell = () => {
             Expira en: <CountdownTimer /> • Acceso inmediato + Garantía total
           </p>
           <button
-            onClick={() => window.location.href = '/'}
+            onClick={() => window.location.href = 'https://prpapp.vercel.app/'}
             className="text-muted-foreground text-sm underline hover:text-foreground transition-colors"
           >
             ❌ No, definitivamente prefiero hacerlo solo
