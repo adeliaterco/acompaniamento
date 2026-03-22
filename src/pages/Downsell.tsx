@@ -4,6 +4,11 @@ import CountdownTimer from "@/components/CountdownTimer";
 
 const Downsell = () => {
   useEffect(() => {
+    // Scroll para o topo quando a página abre
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
     script.async = true;
