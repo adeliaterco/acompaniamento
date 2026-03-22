@@ -1,7 +1,20 @@
+import { useState, useEffect } from "react";
 import { Shield, Clock, MessageCircle, CheckCircle, AlertTriangle } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const Downsell = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
+    script.async = true;
+    script.onload = () => {
+      if (window.checkoutElements) {
+        window.checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-downsell');
+      }
+    };
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background font-body">
       <div className="h-1 bg-gold-gradient w-full" />
@@ -72,6 +85,11 @@ const Downsell = () => {
           </div>
         </div>
 
+        {/* Widget Hotmart */}
+        <div className="border border-gold rounded-xl p-8 bg-card shadow-gold">
+          <div id="hotmart-sales-funnel-downsell" className="mt-6"></div>
+        </div>
+
         {/* Urgency */}
         <div className="text-center bg-card rounded-xl p-8 border border-gold">
           <p className="text-sm tracking-[0.3em] uppercase text-primary mb-4">⏱️ ESTA OFERTA EXPIRA EN</p>
@@ -85,9 +103,12 @@ const Downsell = () => {
 
         {/* CTA */}
         <div className="text-center pb-8">
-          <button className="w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4">
+          <a
+            href="https://pay.hotmart.com/D100233207O?off=r4cz8pgu"
+            className="inline-block w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4"
+          >
             SÍ, QUIERO ACOMPAÑAMIENTO POR $14
-          </button>
+          </a>
           <p className="text-muted-foreground text-sm mb-8">
             Expira en: <CountdownTimer /> • Acceso inmediato + Garantía total
           </p>
