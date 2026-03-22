@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizQuestion from "@/components/QuizQuestion";
 import CountdownTimer from "@/components/CountdownTimer";
@@ -56,6 +56,20 @@ const Index = () => {
       }
     }, 800);
   };
+
+  useEffect(() => {
+    if (phase === "results") {
+      const script = document.createElement("script");
+      script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
+      script.async = true;
+      script.onload = () => {
+        if (window.checkoutElements) {
+          window.checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+        }
+      };
+      document.body.appendChild(script);
+    }
+  }, [phase]);
 
   return (
     <div className="min-h-screen bg-background font-body">
@@ -226,6 +240,8 @@ const Index = () => {
             </p>
             <p className="font-display text-5xl md:text-6xl text-gold-gradient mt-4 mb-2">$17</p>
             <p className="text-muted-foreground text-sm">Pago único • Acceso inmediato</p>
+
+            <div id="hotmart-sales-funnel" className="mt-6"></div>
           </div>
 
           {/* Urgency */}
@@ -253,9 +269,12 @@ const Index = () => {
 
           {/* CTA */}
           <div className="text-center pb-8">
-            <button className="w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4">
+            <a
+              href="https://pay.hotmart.com/D100233207O?off=r4cz8pgu"
+              className="inline-block w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4"
+            >
               SÍ, QUIERO ACOMPAÑAMIENTO POR $17
-            </button>
+            </a>
             <p className="text-muted-foreground text-sm mb-6">
               Expira en: <CountdownTimer /> • Acceso inmediato + Garantía total
             </p>
