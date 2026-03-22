@@ -227,13 +227,23 @@ const Index = () => {
             <p className="font-display text-5xl md:text-6xl text-gold-gradient mt-4 mb-2">$17</p>
             <p className="text-muted-foreground text-sm">Pago único • Acceso inmediato</p>
 
-            {/* HOTMART - Sales Funnel Widget */}
-            <div id="hotmart-sales-funnel" className="mt-6"></div>
+            <!-- HOTMART - Sales Funnel Widget -->
+
+            <!--- sales funnel container --->
+
+            <div id="hotmart-sales-funnel"></div>
+
+            <!--- script load and setup --->
+
             <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+
             <script>
-              {`checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')`}
+
+            checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+
             </script>
-            {/* HOTMART - Sales Funnel Widget */}
+
+            <!-- HOTMART - Sales Funnel Widget -->
           </div>
 
           {/* Urgency */}
