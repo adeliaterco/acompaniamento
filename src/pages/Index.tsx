@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizQuestion from "@/components/QuizQuestion";
 import CountdownTimer from "@/components/CountdownTimer";
@@ -56,6 +56,19 @@ const Index = () => {
       }
     }, 800);
   };
+
+  // useEffect para carregar o script do Hotmart dinamicamente quando a fase for "results"
+  useEffect(() => {
+    if (phase === "results") {
+      // Verifica se o script já foi carregado para evitar carregamentos múltiplos
+      if (!document.querySelector('script[src*="hotmart"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://js.hotmart.com/hotmart.js'; // URL do script do Hotmart (ajuste se necessário)
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    }
+  }, [phase]);
 
   return (
     <div className="min-h-screen bg-background font-body">
@@ -228,6 +241,9 @@ const Index = () => {
             <p className="text-muted-foreground text-sm">Pago único • Acceso inmediato</p>
           </div>
 
+          {/* Widget Hotmart inserido aqui, entre pricing e urgency */}
+          <div id="hotmart-sales-funnel"></div>
+
           {/* Urgency */}
           <div className="text-center bg-card rounded-xl p-8 border border-gold">
             <p className="text-sm tracking-[0.3em] uppercase text-primary mb-4">⏱️ Tu ventana de 72 horas ya empezó</p>
@@ -253,9 +269,12 @@ const Index = () => {
 
           {/* CTA */}
           <div className="text-center pb-8">
-            <button className="w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4">
+            <a
+              href="https://pay.hotmart.com/D100233207O?off=r4cz8pgu"
+              className="w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4 inline-block text-center"
+            >
               SÍ, QUIERO ACOMPAÑAMIENTO POR $17
-            </button>
+            </a>
             <p className="text-muted-foreground text-sm mb-6">
               Expira en: <CountdownTimer /> • Acceso inmediato + Garantía total
             </p>
