@@ -226,10 +226,6 @@ const Index = () => {
             </p>
             <p className="font-display text-5xl md:text-6xl text-gold-gradient mt-4 mb-2">$17</p>
             <p className="text-muted-foreground text-sm">Pago único • Acceso inmediato</p>
-
-            <div id="hotmart-sales-funnel" className="mt-6"></div>
-            <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
-            <script dangerouslySetInnerHTML={{ __html: "checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')" }} />
           </div>
 
           {/* Urgency */}
@@ -257,12 +253,9 @@ const Index = () => {
 
           {/* CTA */}
           <div className="text-center pb-8">
-            <a
-              href="https://pay.hotmart.com/D100233207O?off=r4cz8pgu"
-              className="inline-block w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4"
-            >
+            <button className="w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4">
               SÍ, QUIERO ACOMPAÑAMIENTO POR $17
-            </a>
+            </button>
             <p className="text-muted-foreground text-sm mb-6">
               Expira en: <CountdownTimer /> • Acceso inmediato + Garantía total
             </p>
