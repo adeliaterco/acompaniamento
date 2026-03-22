@@ -109,7 +109,7 @@ const Downsell = () => {
         {/* CTA */}
         <div className="text-center pb-8">
           <a
-            href="https://pay.hotmart.com/D100233207O?off=r4cz8pgu"
+            href="https://pay.hotmart.com/D100233207O?off=k2hleg2c"
             className="inline-block w-full max-w-md bg-gold-gradient text-primary-foreground font-bold text-lg px-10 py-5 rounded-full hover:opacity-90 transition-opacity animate-pulse-gold mb-4"
           >
             SÍ, QUIERO ACOMPAÑAMIENTO POR $14
